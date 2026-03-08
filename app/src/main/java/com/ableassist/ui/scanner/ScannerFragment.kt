@@ -11,20 +11,25 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
+import com.ableassist.R
 import com.ableassist.databinding.FragmentScannerBinding
 import com.ableassist.ml.TextAnalyzer
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+@AndroidEntryPoint
 class ScannerFragment : Fragment() {
 
     private var _binding: FragmentScannerBinding? = null
     private val binding get() = _binding!!
 
+    private var lastRecognizedText = ""
     private lateinit var cameraExecutor: ExecutorService
 
     private val requestPermissionLauncher = registerForActivityResult(
@@ -56,6 +61,17 @@ class ScannerFragment : Fragment() {
         } else {
             requestPermissionLauncher.launch(Manifest.permission.CAMERA)
         }
+
+        binding.btnCapture.setOnClickListener {
+            if (lastRecognizedText.isNotBlank()) {
+                val bundle = Bundle().apply {
+                    putString("recognizedText", lastRecognizedText)
+                }
+                findNavController().navigate(R.id.action_scannerFragment_to_smartReaderFragment, bundle)
+            } else {
+                Toast.makeText(context, "No text detected yet", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun startCamera() {
@@ -77,6 +93,7 @@ class ScannerFragment : Fragment() {
                 .build()
                 .also {
                     it.setAnalyzer(cameraExecutor, TextAnalyzer { text ->
+                        lastRecognizedText = text
                         updateRecognizedText(text)
                     })
                 }
@@ -98,8 +115,6 @@ class ScannerFragment : Fragment() {
     private fun updateRecognizedText(text: String) {
         activity?.runOnUiThread {
             binding.recognizedTextView.text = text
-            // Optional: Spoken feedback for new text
-            // binding.recognizedTextView.announceForAccessibility("Text detected")
         }
     }
 
