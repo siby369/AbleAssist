@@ -1,0 +1,30 @@
+# Android
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizard.settings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+/app/build
+
+# Kotlin
+*.kotlin_module
+
+# Gradle
+.gradle
+build/
+
+# Local
+local.properties
+.DS_Store
+*.swp
+*.bak
+*~
