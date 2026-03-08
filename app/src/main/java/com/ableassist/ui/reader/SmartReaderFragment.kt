@@ -43,7 +43,7 @@ class SmartReaderFragment : Fragment(), TextToSpeech.OnInitListener {
         fullText = arguments?.getString("recognizedText") ?: "No text detected."
         binding.tvContent.text = fullText
 
-        binding.btnPlay_pause.setOnClickListener {
+        binding.btnPlayPause.setOnClickListener {
             if (isPlaying) pauseReading() else startReading()
         }
 
@@ -64,14 +64,14 @@ class SmartReaderFragment : Fragment(), TextToSpeech.OnInitListener {
             override fun onStart(utteranceId: String?) {
                 activity?.runOnUiThread {
                     isPlaying = true
-                    binding.btnPlay_pause.text = "Pause"
+                    binding.btnPlayPause.text = "Pause"
                 }
             }
 
             override fun onDone(utteranceId: String?) {
                 activity?.runOnUiThread {
                     isPlaying = false
-                    binding.btnPlay_pause.text = "Play"
+                    binding.btnPlayPause.text = "Play"
                     clearHighlight()
                 }
             }
@@ -97,14 +97,14 @@ class SmartReaderFragment : Fragment(), TextToSpeech.OnInitListener {
     private fun pauseReading() {
         tts?.stop()
         isPlaying = false
-        binding.btnPlay_pause.text = "Play"
+        binding.btnPlayPause.text = "Play"
         clearHighlight()
     }
 
     private fun stopReading() {
         tts?.stop()
         isPlaying = false
-        binding.btnPlay_pause.text = "Play"
+        binding.btnPlayPause.text = "Play"
         clearHighlight()
     }
 
