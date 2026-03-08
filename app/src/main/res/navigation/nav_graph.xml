@@ -13,12 +13,35 @@
         <action
             android:id="@+id/action_homeFragment_to_scannerFragment"
             app:destination="@id/scannerFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/scannerFragment"
         android:name="com.ableassist.ui.scanner.ScannerFragment"
         android:label="Scanner"
-        tools:layout="@layout/fragment_scanner" />
+        tools:layout="@layout/fragment_scanner">
+        <action
+            android:id="@+id/action_scannerFragment_to_smartReaderFragment"
+            app:destination="@id/smartReaderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/smartReaderFragment"
+        android:name="com.ableassist.ui.reader.SmartReaderFragment"
+        android:label="Smart Reader"
+        tools:layout="@layout/fragment_smart_reader">
+        <argument
+            android:name="recognizedText"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ableassist.ui.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>
