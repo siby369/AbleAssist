@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.AbleAssist" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryVariant">#3700B3</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#03DAC6</item>
+        <item name="colorSecondaryVariant">#018786</item>
+        <item name="colorOnSecondary">#000000</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Accessibility: Enforce larger text by default if needed, or through settings -->
+    </style>
+
+    <!-- High Contrast Theme (Yellow on Black) -->
+    <style name="Theme.AbleAssist.HighContrast" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">#000000</item>
+        <item name="colorPrimary">#FFFF00</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorSecondary">#FFFF00</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="android:textColor">#FFFF00</item>
+    </style>
+</resources>

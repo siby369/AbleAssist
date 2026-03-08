@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AbleAssist</string>
+    <string name="app_title_description">AbleAssist Home Screen</string>
+    <string name="scan_document">Scan Document</string>
+    <string name="btn_scan_description">Navigate to Document Scanner. This will open the camera to read textbooks or notes.</string>
+    <string name="voice_assistant">Voice Assistant</string>
+    <string name="btn_voice_assistant_description">Open Voice Study Assistant. You can ask questions about your scanned documents.</string>
+</resources>
