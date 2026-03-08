@@ -22,7 +22,8 @@
 .gradle
 build/
 
-# Local
+# Documentation
+*.md
 local.properties
 .DS_Store
 *.swp
